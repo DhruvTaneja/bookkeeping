@@ -1,0 +1,28 @@
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\bin\Debug\Diwas Taneja.exe
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\bin\Debug\Diwas Taneja.pdb
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.Properties.Resources.resources
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\Diwas Taneja.exe
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\Diwas Taneja.pdb
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.Form1.resources
+C:\Users\Dhruv\AppData\Local\Temporary Projects\Diwas Taneja\bin\Debug\Diwas Taneja.exe.config
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\bin\Debug\Diwas Taneja.exe.config
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas Taneja.exe
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas Taneja.pdb
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\bin\Debug\Diwas Taneja.exe
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\bin\Debug\Diwas Taneja.pdb
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.Properties.Resources.resources
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.AddParty.resources
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.AddItem.resources
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.EditItem.resources
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.EditParty.resources
+C:\Users\Dhruv\Documents\Visual Studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.Main.resources
+C:\Users\Dhruv\Documents\Visual Studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.SelectParty.resources
+C:\Users\Dhruv\Documents\Visual Studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.Login.resources
+C:\Users\Dhruv\Documents\Visual Studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.ChangePassword.resources
+C:\Users\Dhruv\documents\visual studio 2010\Projects\Diwas Taneja\Diwas Taneja\obj\x86\Debug\Diwas_Taneja.OpenFileForm.resources

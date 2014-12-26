@@ -39,7 +39,7 @@ namespace Diwas_Taneja
             if (validateData())
             {
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load("C:\\ck book keeping\\data\\p.xml");
+                xmlDoc.Load("data\\p.xml");
                 XmlNode rootNode = xmlDoc.DocumentElement;
                 XmlNodeList partyList = rootNode.ChildNodes;
                 XmlElement newParty = xmlDoc.CreateElement("party");
@@ -50,7 +50,7 @@ namespace Diwas_Taneja
                 newParty.AppendChild(name);
                 newParty.AppendChild(balance);
                 xmlDoc.DocumentElement.InsertAfter(newParty, xmlDoc.DocumentElement.LastChild);
-                xmlDoc.Save("C:\\ck book keeping\\data\\p.xml");
+                xmlDoc.Save("data\\p.xml");
                 Close();
             }
             else

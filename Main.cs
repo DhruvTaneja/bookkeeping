@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Text;
+using System.Security.AccessControl;
 
 namespace Diwas_Taneja
 {
@@ -55,7 +56,7 @@ namespace Diwas_Taneja
         {
             List<String> itemList = new List<string>();
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("C:\\ck book keeping\\data\\i.xml");
+            xmlDoc.Load("data\\i.xml");
             XmlNodeList xmlNodeList = xmlDoc.SelectNodes("//items/item");
             foreach (XmlNode partyNode in xmlNodeList)
             {
@@ -276,16 +277,14 @@ namespace Diwas_Taneja
             if (dr == System.Windows.Forms.DialogResult.Yes)
             {
                 //  add the data to a file now
-                //  check everything first
-                //  and change folder names if party names are edited
                 string partyName = partyLabel.Text;
                 string date = dayBox.Text;
                 string yearFolder = yearBox.Text;
                 string monthFolder = monthBox.Text;
-                string root = @"C:\ck book keeping\parties\";
+                string root = @"parties\";
                 string path = root + partyName + '\\' + yearFolder + '\\' + monthFolder;
                 Directory.CreateDirectory(path);
-
+                
                 //  creating the file
                 string fileName = path + '\\' + date + ".ck";
                 string data = date + ' ' + monthFolder + ' ' + yearFolder + Environment.NewLine;
@@ -301,6 +300,30 @@ namespace Diwas_Taneja
                     Byte[] info = new UTF8Encoding(true).GetBytes(data);
                     fs.Write(info, 0, info.Length);
                 }
+
+                //  changing the balance amount
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load("data\\p.xml");
+                XmlNode rootNode = xmlDoc.DocumentElement;
+                XmlNodeList partyList = rootNode.ChildNodes;
+                foreach (XmlNode node in partyList)
+                {
+                    if (node.FirstChild.InnerText == partyName)
+                    {
+                        try
+                        {
+                            int newNet = int.Parse(netValue.Text,
+                                System.Globalization.CultureInfo.InvariantCulture);
+                            node.LastChild.InnerText = (int.Parse(node.LastChild.InnerText)
+                            + newNet).ToString();
+                        }
+                        catch (FormatException ex)
+                        {
+                            MessageBox.Show("Updation error. Try again.");
+                        }
+                    }
+                }
+                xmlDoc.Save("data\\p.xml");
 
                 //  hiding the panel and bringing up the main
                 //  and clearing up the fields
@@ -358,7 +381,7 @@ namespace Diwas_Taneja
         private void openRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult openDialogResult = openFileDialog.ShowDialog();
-            openFileDialog.InitialDirectory = @"C:\ck book keeping\parties";
+            openFileDialog.InitialDirectory = @"parties";
             if (openDialogResult == DialogResult.OK)
             {
                 OpenFileForm openFileForm = new OpenFileForm(openFileDialog.FileName);
@@ -369,6 +392,96 @@ namespace Diwas_Taneja
         private void newEntryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             button1_Click(sender, e);
+        }
+
+        private void findButton_Click(object sender, EventArgs e)
+        {
+            FindForm findForm = new FindForm();
+            findForm.ShowDialog();
+        }
+
+        private void findEntriesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            findButton_Click(sender, e);
+        }
+
+        private void packetBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                float rate = float.Parse(rateBox.Text, System.Globalization.CultureInfo.InvariantCulture);
+                int packets = int.Parse(packetBox.Text, System.Globalization.CultureInfo.InvariantCulture);
+                int recieved = int.Parse(receivedBox.Text, System.Globalization.CultureInfo.InvariantCulture);
+                if (rateBox.Text == "")
+                    rate = 0;
+                float total = rate * packets;
+                float net = total - recieved;
+                valueLabel.Text = total.ToString();
+                netValue.Text = net.ToString();
+            }
+            catch (FormatException exception)
+            {
+
+            }
+            catch (OverflowException overflow)
+            {
+                MessageBox.Show("Values too large. Please check them once",
+                    "Large Value Error");
+                rateBox.Text = "";
+            }
+        }
+
+        private void groupViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BigPic bigPic = new BigPic();
+            bigPic.ShowDialog();
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                if (createNewPanel.Visible == true)
+                {
+                    DialogResult discard = MessageBox.Show("Do you want to discard this unsaved entry?",
+                        "Discard?", MessageBoxButtons.YesNo);
+                    if (discard == DialogResult.Yes)
+                    {
+                        clearAll();
+                    }
+                }
+                else
+                    button1_Click(sender, e);
+            }
+
+            if (e.Control && e.KeyCode == Keys.O)
+            {
+                openRecordToolStripMenuItem_Click(sender, e);
+            }
+
+            if (e.Control && e.KeyCode == Keys.F)
+            {
+                findEntriesToolStripMenuItem_Click(sender, e);
+            }
+
+            if (e.Control && e.KeyCode == Keys.G)
+            {
+                groupViewToolStripMenuItem_Click(sender, e);
+            }
+        }
+
+        private void clearAll()
+        {
+            dayBox.Text = "";
+            monthBox.Text = "";
+            yearBox.Text = "";
+            itemBox.Text = "";
+            packetBox.Text = "";
+            rateBox.Text = "";
+            valueLabel.Text = "#";
+            receivedBox.Text = "";
+            netValue.Text = "#";
+            dayBox.Focus();
         }
     }
 }

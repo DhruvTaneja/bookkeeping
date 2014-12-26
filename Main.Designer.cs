@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.newEntry = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.createNewPanel = new System.Windows.Forms.Panel();
@@ -58,6 +59,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.findEntriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +94,7 @@
             this.button2.TabIndex = 100;
             this.button2.Text = "Find";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.findButton_Click);
             // 
             // createNewPanel
             // 
@@ -305,6 +310,7 @@
             this.packetBox.Name = "packetBox";
             this.packetBox.Size = new System.Drawing.Size(100, 20);
             this.packetBox.TabIndex = 5;
+            this.packetBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.packetBox_KeyUp);
             // 
             // packetLabel
             // 
@@ -353,6 +359,9 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newEntryToolStripMenuItem,
             this.openRecordToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.findEntriesToolStripMenuItem,
+            this.groupViewToolStripMenuItem,
             this.toolStripSeparator1,
             this.changePasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
@@ -363,33 +372,56 @@
             // newEntryToolStripMenuItem
             // 
             this.newEntryToolStripMenuItem.Name = "newEntryToolStripMenuItem";
-            this.newEntryToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.newEntryToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + N";
+            this.newEntryToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.newEntryToolStripMenuItem.Text = "New Entry";
             this.newEntryToolStripMenuItem.Click += new System.EventHandler(this.newEntryToolStripMenuItem_Click);
             // 
             // openRecordToolStripMenuItem
             // 
             this.openRecordToolStripMenuItem.Name = "openRecordToolStripMenuItem";
-            this.openRecordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.openRecordToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
+            this.openRecordToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.openRecordToolStripMenuItem.Text = "Open Record";
             this.openRecordToolStripMenuItem.Click += new System.EventHandler(this.openRecordToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(189, 6);
+            // 
+            // findEntriesToolStripMenuItem
+            // 
+            this.findEntriesToolStripMenuItem.Name = "findEntriesToolStripMenuItem";
+            this.findEntriesToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + F";
+            this.findEntriesToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.findEntriesToolStripMenuItem.Text = "Find Entries";
+            this.findEntriesToolStripMenuItem.Click += new System.EventHandler(this.findEntriesToolStripMenuItem_Click);
+            // 
+            // groupViewToolStripMenuItem
+            // 
+            this.groupViewToolStripMenuItem.Name = "groupViewToolStripMenuItem";
+            this.groupViewToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + G";
+            this.groupViewToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.groupViewToolStripMenuItem.Text = "Group View";
+            this.groupViewToolStripMenuItem.Click += new System.EventHandler(this.groupViewToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(165, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -450,13 +482,15 @@
             this.Controls.Add(this.newEntry);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "CK Book Keeping";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.createNewPanel.ResumeLayout(false);
             this.createNewPanel.PerformLayout();
@@ -509,6 +543,9 @@
         private System.Windows.Forms.ToolStripMenuItem openRecordToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem findEntriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem groupViewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 

@@ -33,7 +33,7 @@ namespace Diwas_Taneja
                 int i = 0;
                 while ((s = sr.ReadLine()) != null)
                 {
-                    //  creating an array of 
+                    //  creating an array of lines
                     array[i++] = s;
                 }
                 i = 0;
@@ -57,6 +57,39 @@ namespace Diwas_Taneja
         public void setFilePath(string filePath)
         {
             this.filePath = filePath;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmDelete = MessageBox.Show(
+                "Are you sure you want to delete this record?",
+                "Confirm Delete", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                File.Delete(filePath);
+                Close();
+            }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            EditForm editForm = new EditForm();
+            editForm.date = valueDate.Text;
+            editForm.item = valueItem.Text;
+            editForm.packets = valuePacket.Text;
+            editForm.rate = valueRate.Text;
+            editForm.total = valueTotal.Text;
+            editForm.received = valueReceived.Text;
+            editForm.net = valueNet.Text;
+            editForm.party = valueParty.Text;
+            editForm.FormClosed += new FormClosedEventHandler(editForm_FormClosed);
+            editForm.ShowDialog();
+            this.Hide();
+        }
+
+        void editForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
         }
     }
 }

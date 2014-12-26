@@ -30,13 +30,13 @@ namespace Diwas_Taneja
             if (validate())
             {
                 XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load("C:\\ck book keeping\\data\\i.xml");
+                xmlDoc.Load("data\\i.xml");
                 XmlNode rootNode = xmlDoc.DocumentElement;
                 XmlNodeList itemList = rootNode.ChildNodes;
                 XmlElement newItem = xmlDoc.CreateElement("item");
                 newItem.InnerText = nameBox.Text;
                 rootNode.InsertAfter(newItem, rootNode.LastChild);
-                xmlDoc.Save("C:\\ck book keeping\\data\\i.xml");
+                xmlDoc.Save("data\\i.xml");
                 Close();
             }
             else

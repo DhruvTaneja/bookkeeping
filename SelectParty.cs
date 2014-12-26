@@ -20,7 +20,7 @@ namespace Diwas_Taneja
         {
             List<String> partyList = new List<string>();
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("C:\\ck book keeping\\data\\p.xml");
+            xmlDoc.Load("data\\p.xml");
             XmlNodeList xmlNodeList = xmlDoc.SelectNodes("//parties/party/name");
             foreach (XmlNode partyNode in xmlNodeList)
             {

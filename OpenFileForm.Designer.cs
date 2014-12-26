@@ -203,8 +203,10 @@
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 14;
+            this.deleteButton.TabStop = false;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // editButton
             // 
@@ -212,12 +214,15 @@
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(75, 23);
             this.editButton.TabIndex = 15;
+            this.editButton.TabStop = false;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // valueDate
             // 
             this.valueDate.AutoSize = true;
+            this.valueDate.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.valueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueDate.Location = new System.Drawing.Point(126, 55);
             this.valueDate.Name = "valueDate";
